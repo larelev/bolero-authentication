@@ -1,0 +1,49 @@
+{
+    "name": "larelev/bolero-authentication",
+    "description": "Authentication plugin for Bolero framework",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Bolero\\Plugins\\Authentication\\": "src/"
+        }
+    },
+    "license": "GPL-3.0+",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "David Blanchard",
+            "email": "dpjb@hotmail.fr",
+            "role": "Creator"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../dashboard",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../framework",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../flashmessage",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.2",
+        "larelev/bolero-dashboard": "@dev",
+        "larelev/bolero-framework": "@dev",
+        "larelev/bolero-flashmessage": "@dev"
+    }
+}
