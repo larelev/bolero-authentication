@@ -2,7 +2,7 @@
 
 namespace Bolero\Plugins\Authentication;
 
-use Bolero\Framework\Container\PluginContainerInterface;
+use Bolero\Framework\Plugin\PluginContainerInterface;
 use League\Container\DefinitionContainerInterface;
 
 class Container implements PluginContainerInterface

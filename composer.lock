@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52afc24f8237cc884fd91d5653fc2f3c",
+    "content-hash": "15c7aaf61dddefa4f5d43285e1396140",
     "packages": [
         {
             "name": "doctrine/dbal",
@@ -164,31 +164,23 @@
         },
         {
             "name": "larelev/bolero-dashboard",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/larelev/bolero-dashboard.git",
-                "reference": "ce60b27f5e61f421c03cb0cff29212455e980469"
-            },
+            "version": "0.1.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/larelev/bolero-dashboard/zipball/ce60b27f5e61f421c03cb0cff29212455e980469",
-                "reference": "ce60b27f5e61f421c03cb0cff29212455e980469",
-                "shasum": ""
+                "type": "path",
+                "url": "../dashboard",
+                "reference": "506802244098901fa58ed3ad4e1dd18f33331728"
             },
             "require": {
                 "larelev/bolero-flashmessage": "@dev",
                 "larelev/bolero-framework": "@dev",
                 "php": "^8.2"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Bolero\\Plugins\\Dashboard\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0+"
             ],
@@ -200,38 +192,29 @@
                 }
             ],
             "description": "Dashboard plugin for Bolero framework",
-            "support": {
-                "issues": "https://github.com/larelev/bolero-dashboard/issues",
-                "source": "https://github.com/larelev/bolero-dashboard/tree/main"
-            },
-            "time": "2024-04-06T15:39:52+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "larelev/bolero-flashmessage",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/larelev/bolero-flashmessage.git",
-                "reference": "2649ccdbc989bd9dc380b2ec13ea20651bb0f317"
-            },
+            "version": "0.1.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/larelev/bolero-flashmessage/zipball/2649ccdbc989bd9dc380b2ec13ea20651bb0f317",
-                "reference": "2649ccdbc989bd9dc380b2ec13ea20651bb0f317",
-                "shasum": ""
+                "type": "path",
+                "url": "../flashmessage",
+                "reference": "59840dc3cddacd40aaa619739012b394b05746c2"
             },
             "require": {
                 "larelev/bolero-framework": "@dev",
                 "php": "^8.2"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Bolero\\Plugins\\FlashMessage\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0+"
             ],
@@ -243,25 +226,18 @@
                 }
             ],
             "description": "FlashMessage plugin for Bolero framework",
-            "support": {
-                "issues": "https://github.com/larelev/bolero-flashmessage/issues",
-                "source": "https://github.com/larelev/bolero-flashmessage/tree/main"
-            },
-            "time": "2024-04-06T15:39:52+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "larelev/bolero-framework",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/larelev/bolero-framework.git",
-                "reference": "c7eab4510af51ce2f452b548d4417a4bbd907504"
-            },
+            "version": "0.1.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/larelev/bolero-framework/zipball/c7eab4510af51ce2f452b548d4417a4bbd907504",
-                "reference": "c7eab4510af51ce2f452b548d4417a4bbd907504",
-                "shasum": ""
+                "type": "path",
+                "url": "../framework",
+                "reference": "8129c50a430b1e2883a52ac484ef47ac8e6843d7"
             },
             "require": {
                 "doctrine/dbal": "^4.1.x-dev",
@@ -277,14 +253,17 @@
                 "phpunit/phpunit": "11.1.x-dev",
                 "symfony/var-dumper": "^7.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Bolero\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Bolero\\Framework\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "GPL-3.0+"
             ],
@@ -296,11 +275,10 @@
                 }
             ],
             "description": "Professional PHP experiments",
-            "support": {
-                "issues": "https://github.com/larelev/bolero-framework/issues",
-                "source": "https://github.com/larelev/bolero-framework/tree/main"
-            },
-            "time": "2024-04-06T15:39:53+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "league/container",
