@@ -31,7 +31,7 @@ class Guest implements MiddlewareInterface
             $pathname = '/dashboard';
         }
 
-        if ($this->session->has(\Bolero\Plugins\Authentication\Authentication::AUTH_KEY)) {
+        if ($this->session->has(\Bolero\Plugins\Authentication\Configuration::AUTH_KEY)) {
             return new RedirectResponse($pathname);
         }
 
