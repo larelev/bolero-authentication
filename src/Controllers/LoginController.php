@@ -6,6 +6,8 @@ use Bolero\Framework\Http\RedirectResponse;
 use Bolero\Framework\Http\Response;
 use Bolero\Framework\MVC\AbstractController;
 use Bolero\Plugins\Authentication\Components\Authenticator;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class LoginController extends AbstractController
 {
@@ -13,6 +15,10 @@ class LoginController extends AbstractController
     {
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function index(): Response
     {
         return $this->render('login.html.twig');

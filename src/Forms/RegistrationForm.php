@@ -12,7 +12,7 @@ class RegistrationForm
     private array $errors = [];
     private int $errorCount = -1;
 
-    public function __construct(private UserMapper $userMapper)
+    public function __construct(private readonly UserMapper $userMapper)
     {
     }
 

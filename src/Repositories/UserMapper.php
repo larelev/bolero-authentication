@@ -5,10 +5,14 @@ namespace Bolero\Plugins\Authentication\Repositories;
 use Bolero\Framework\Dbal\DataMapper;
 use Bolero\Framework\Dbal\Entity;
 use Bolero\Plugins\Authentication\Entities\User;
+use Doctrine\DBAL\Exception;
 
 class UserMapper extends DataMapper
 {
 
+    /**
+     * @throws Exception
+     */
     public function insert(User | Entity &$entity): void
     {
         $stmt = $this->connection->prepare("

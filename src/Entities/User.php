@@ -4,13 +4,14 @@ namespace Bolero\Plugins\Authentication\Entities;
 
 use Bolero\Framework\Dbal\Entity;
 use Bolero\Plugins\Authentication\Components\AuthenticationInterface;
+use DateTimeImmutable;
 
 class User extends Entity implements AuthenticationInterface
 {
     public function __construct(
         private readonly string $email,
         private readonly string $password,
-        private readonly \DateTimeImmutable $createdAt,
+        private readonly DateTimeImmutable $createdAt,
         private ?int $id = null,
     ) {
     }
@@ -30,7 +31,7 @@ class User extends Entity implements AuthenticationInterface
         return $this->password;
     }
 
-    public function getCreatedAt(): \DateTimeImmutable
+    public function getCreatedAt(): DateTimeImmutable
     {
         return $this->createdAt;
     }
@@ -50,7 +51,7 @@ class User extends Entity implements AuthenticationInterface
         return new self(
             email: $email,
             password: password_hash($password, PASSWORD_DEFAULT),
-            createdAt: new \DateTimeImmutable(),
+            createdAt: new DateTimeImmutable(),
         );
     }
 

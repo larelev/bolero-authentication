@@ -1,20 +1,24 @@
 <?php
 
 use Bolero\Framework\Routing\Route;
+use Bolero\Plugins\Authentication\Controllers\LoginController;
+use Bolero\Plugins\Authentication\Controllers\RegistrationController;
+use Bolero\Plugins\Authentication\Middlewares\Authentication;
+use Bolero\Plugins\Authentication\Middlewares\Guest;
 
-Route::get('/register', [\Bolero\Plugins\Authentication\Controllers\RegistrationController::class, 'index',
+Route::get('/register', [RegistrationController::class, 'index',
     [
-        \Bolero\Plugins\Authentication\Middlewares\Guest::class,
+        Guest::class,
     ]]);
-Route::post('/register', [\Bolero\Plugins\Authentication\Controllers\RegistrationController::class, 'register']);
-Route::get('/login', [\Bolero\Plugins\Authentication\Controllers\LoginController::class, 'index',
+Route::post('/register', [RegistrationController::class, 'register']);
+Route::get('/login', [LoginController::class, 'index',
     [
-        \Bolero\Plugins\Authentication\Middlewares\Guest::class,
+        Guest::class,
     ],
 ]);
-Route::post('/login', [\Bolero\Plugins\Authentication\Controllers\LoginController::class, 'login']);
-Route::get('/logout', [\Bolero\Plugins\Authentication\Controllers\LoginController::class, 'logout',
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout',
     [
-        \Bolero\Plugins\Authentication\Middlewares\Authentication::class,
+        Authentication::class,
     ],
 ]);

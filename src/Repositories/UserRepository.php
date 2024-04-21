@@ -2,16 +2,21 @@
 
 namespace Bolero\Plugins\Authentication\Repositories;
 
-use Doctrine\DBAL\Connection;
 use Bolero\Plugins\Authentication\Components\AuthenticationInterface;
 use Bolero\Plugins\Authentication\Entities\User;
+use DateTimeImmutable;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Exception;
 
 class UserRepository implements AuthenticationRepositoryInterface
 {
-    public function __construct(private Connection $connection)
+    public function __construct(private readonly Connection $connection)
     {
     }
 
+    /**
+     * @throws Exception
+     */
     public function findByEmail(string $email): ?AuthenticationInterface
     {
         $queryBuilder = $this->connection->createQueryBuilder();
@@ -32,10 +37,10 @@ class UserRepository implements AuthenticationRepositoryInterface
         $obj = (object) $row[0];
 
         $user = new User(
-            id: $obj->id,
             email: $obj->email,
             password: $obj->password,
-            createdAt: new \DateTimeImmutable($obj->created_at)
+            createdAt: new DateTimeImmutable($obj->created_at),
+            id: $obj->id
         );
 
         return $user;

@@ -3,6 +3,9 @@
 namespace Bolero\Plugins\Authentication;
 
 use Bolero\Framework\Plugin\PluginContainerInterface;
+use Bolero\Framework\Session\SessionInterface;
+use Bolero\Plugins\Authentication\Components\Authenticator;
+use Bolero\Plugins\Authentication\Repositories\UserRepository;
 use League\Container\DefinitionContainerInterface;
 
 class Container implements PluginContainerInterface
@@ -10,10 +13,10 @@ class Container implements PluginContainerInterface
 
     public static function provide(DefinitionContainerInterface $container): DefinitionContainerInterface
     {
-        $container->add(\Bolero\Plugins\Authentication\Components\Authenticator::class)
+        $container->add(Authenticator::class)
             ->addArguments([
-                \Bolero\Plugins\Authentication\Repositories\UserRepository::class,
-                \Bolero\Framework\Session\SessionInterface::class,
+                UserRepository::class,
+                SessionInterface::class,
             ]);
 
         return $container;

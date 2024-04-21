@@ -8,6 +8,7 @@ use Bolero\Framework\Http\Response;
 use Bolero\Framework\Middleware\MiddlewareInterface;
 use Bolero\Framework\Middleware\RequestHandlerInterface;
 use Bolero\Framework\Session\SessionInterface;
+use Bolero\Plugins\Authentication\Configuration;
 use Bolero\Plugins\FlashMessage\FlashMessageInterface;
 
 class Authentication implements MiddlewareInterface
@@ -23,7 +24,7 @@ class Authentication implements MiddlewareInterface
     public function process(Request $request, RequestHandlerInterface $requestHandler): Response
     {
         $this->session->start();
-        if (!$this->session->has(\Bolero\Plugins\Authentication\Configuration::AUTH_KEY)) {
+        if (!$this->session->has(Configuration::AUTH_KEY)) {
             $this->flashMessage->setError('Please sign in.');
             return new RedirectResponse("/login");
         }

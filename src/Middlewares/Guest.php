@@ -9,6 +9,7 @@ use Bolero\Framework\Http\Response;
 use Bolero\Framework\Middleware\MiddlewareInterface;
 use Bolero\Framework\Middleware\RequestHandlerInterface;
 use Bolero\Framework\Session\SessionInterface;
+use Bolero\Plugins\Authentication\Configuration;
 
 class Guest implements MiddlewareInterface
 {
@@ -31,7 +32,7 @@ class Guest implements MiddlewareInterface
             $pathname = '/dashboard';
         }
 
-        if ($this->session->has(\Bolero\Plugins\Authentication\Configuration::AUTH_KEY)) {
+        if ($this->session->has(Configuration::AUTH_KEY)) {
             return new RedirectResponse($pathname);
         }
 

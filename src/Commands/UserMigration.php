@@ -2,17 +2,19 @@
 
 namespace Bolero\Plugins\Authentication\Commands;
 
+use Bolero\Framework\Console\Commands\Attributes\Command;
+use Bolero\Framework\Console\Commands\Attributes\CommandArgs;
+use Bolero\Framework\Console\Commands\Attributes\CommandConstruct;
+use Bolero\Framework\Console\Commands\CommandInterface;
+use Bolero\Framework\Console\Exceptions\ConsoleException;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Exception;
 use Doctrine\DBAL\Schema\AbstractSchemaManager;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\DBAL\Schema\Table;
 use Doctrine\DBAL\Types\Types;
-use Bolero\Framework\Console\Commands\Attributes\Command;
-use Bolero\Framework\Console\Commands\Attributes\CommandArgs;
-use Bolero\Framework\Console\Commands\Attributes\CommandConstruct;
-use Bolero\Framework\Console\Commands\CommandInterface;
-use Bolero\Framework\Console\Exceptions\ConsoleException;
+use InvalidArgumentException;
+use Throwable;
 
 #[Command(name: "migration")]
 #[Command(desc: "Adds or removes the user registration table from the database.")]
@@ -27,6 +29,11 @@ class UserMigration implements CommandInterface
     ) {
     }
 
+    /**
+     * @throws ConsoleException
+     * @throws Throwable
+     * @throws Exception
+     */
     public function execute(array $params = []): int
     {
         try
@@ -43,7 +50,7 @@ class UserMigration implements CommandInterface
             }
 
             if ($doError) {
-                throw new \InvalidArgumentException('Invalid arguments.');
+                throw new InvalidArgumentException('Invalid arguments.');
             }
 
             $this->connection->beginTransaction();
@@ -75,11 +82,14 @@ class UserMigration implements CommandInterface
         } catch (Exception $exception) {
             $this->connection->rollBack();
             throw $exception;
-        } catch (\Throwable $throwable) {
+        } catch (Throwable $throwable) {
             throw $throwable;
         }
     }
 
+    /**
+     * @throws Exception
+     */
     private function doUp(AbstractSchemaManager $schema): void
     {
         if ($schema->tableExists('users')) {
@@ -97,6 +107,9 @@ class UserMigration implements CommandInterface
         echo 'Users table has been created.' . PHP_EOL;
     }
 
+    /**
+     * @throws Exception
+     */
     private function doDown(AbstractSchemaManager $schema): void
     {
         if (!$schema->tableExists('users')) {

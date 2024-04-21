@@ -12,6 +12,9 @@ use Bolero\Plugins\Authentication\Exceptions\CsrfTokenMismatchException;
 class VerifyCsrfToken implements MiddlewareInterface
 {
 
+    /**
+     * @throws CsrfTokenMismatchException
+     */
     public function process(Request $request, RequestHandlerInterface $requestHandler): Response
     {
         if ($request->getMethod() == 'GET') {

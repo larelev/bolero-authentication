@@ -8,6 +8,8 @@ use Bolero\Framework\MVC\AbstractController;
 use Bolero\Plugins\Authentication\Components\Authenticator;
 use Bolero\Plugins\Authentication\Forms\RegistrationForm;
 use Bolero\Plugins\Authentication\Repositories\UserMapper;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -17,6 +19,10 @@ class RegistrationController extends AbstractController
     ) {
     }
 
+    /**
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
+     */
     public function index(): Response
     {
         return $this->render('register.html.twig');

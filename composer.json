@@ -44,6 +44,13 @@
         "php": "^8.2",
         "larelev/bolero-dashboard": "@dev",
         "larelev/bolero-framework": "@dev",
-        "larelev/bolero-flashmessage": "@dev"
+        "larelev/bolero-flashmessage": "@dev",
+      "ext-curl": "*",
+        "ext-readline": "*",
+        "ext-mbstring": "*",
+        "ext-iconv": "*",
+        "ext-zip": "*",
+        "ext-tidy": "*",
+        "ext-pcntl": "*"
     }
 }
