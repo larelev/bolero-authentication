@@ -49,8 +49,6 @@
         "ext-readline": "*",
         "ext-mbstring": "*",
         "ext-iconv": "*",
-        "ext-zip": "*",
-        "ext-tidy": "*",
-        "ext-pcntl": "*"
+        "ext-zip": "*"
     }
 }
